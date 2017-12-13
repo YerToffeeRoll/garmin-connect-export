@@ -1,11 +1,15 @@
-garmin-connect-export
+garmin-group-data-connect-export
 =====================
+
+This is a modified and hacked together love child of the  garmin-connect-export script by kjkjava.
+
+(https://github.com/kjkjava/garmin-connect-export)
 
 Download a copy of your Garmin Connect data, including stats and GPX tracks.
 
 Description
 -----------
-This script will backup your personal Garmin Connect data. All downloaded data will go into a directory called `YYYY-MM-DD_garmin_connect_export/` in the current working directory. Activity records and details will go into a CSV file called `activities.csv`. GPX files (or whatever format you specify) containing track data, activity title, and activity descriptions are saved as well, using the Activity ID.
+This script will backup group Garmin Connect data. All downloaded data will go into a directory called `YYYY-MM-DD_garmin_connect_export/` in the current working directory. Activity records and details will go into a CSV file called `activities.csv`. GPX files (or whatever format you specify) containing track data, activity title, and activity descriptions are saved as well, using the Activity ID.
 
 If there is no GPS track data (e.g., due to an indoor treadmill workout), a data file is still saved. If the GPX format is used, activity title and description data are saved. If the original format is used, Garmin may not provide a file at all and an empty file will be created. For activities where a GPX file was uploaded, Garmin may not have a TCX file available for download, so an empty file will be created. Since GPX is the only format Garmin should have for every activity, it is the default and preferred download format.
 
@@ -16,36 +20,9 @@ Usage
 You will need a little experience running things from the command line to use this script. That said, here are the usage details from the `--help` flag:
 
 ```
-usage: gcexport.py [-h] [--version] [--username [USERNAME]]
-                   [--password [PASSWORD]] [-c [COUNT]]
-                   [-f [{gpx,tcx,original}]] [-d [DIRECTORY]] [-u]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --version             print version and exit
-  --username [USERNAME]
-                        your Garmin Connect username (otherwise, you will be
-                        prompted)
-  --password [PASSWORD]
-                        your Garmin Connect password (otherwise, you will be
-                        prompted)
-  -c [COUNT], --count [COUNT]
-                        number of recent activities to download, or 'all'
-                        (default: 1)
-  -f [{gpx,tcx,original}], --format [{gpx,tcx,original}]
-                        export format; can be 'gpx', 'tcx', or 'original'
-                        (default: 'gpx')
-  -d [DIRECTORY], --directory [DIRECTORY]
-                        the directory to export to (default: './YYYY-MM-
-                        DD_garmin_connect_export')
-  -u, --unzip           if downloading ZIP files (format: 'original'), unzip
-                        the file and removes the ZIP file
-```
-
+usage: gcexport.py 
 Examples:
-`python gcexport.py --count all` will download all of your data to a dated directory.
-
-`python gcexport.py -d ~/MyActivities -c 3 -f original -u --username bobbyjoe --password bestpasswordever1` will download your three most recent activities in the FIT file format (or whatever they were uploaded as) into the `~/MyActivities` directory (unless they already exist). Using the `--username` and `--password` flags are not recommended because your password will be stored in your command line history. Instead, omit them to be prompted (and note that nothing will be displayed when you type your password).
+`python gcexport.py will download all of your group data to a dated directory.
 
 Alternatively, you may run it with `./gcexport.py` if you set the file as executable (i.e., `chmod u+x gcexport.py`).
 
@@ -71,10 +48,4 @@ Contributions
 -------------
 Contributions are welcome, particularly if this script stops working with Garmin Connect. You may consider opening a GitHub Issue first. New features, however simple, are encouraged.
 
-License
--------
-[MIT](https://github.com/kjkjava/garmin-connect-export/blob/master/LICENSE) &copy; 2015 Kyle Krafka
 
-Thank You
----------
-Thanks for using this script and I hope you find it as useful as I do! :smile:
